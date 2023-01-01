@@ -5,8 +5,9 @@ type DuelCardProps={
 
 const DuelCard:React.FC<DuelCardProps>=(props)=>{
     return(
-        <div className="border-2 border-sky-500">
-            {props.cardName}
+        <div className="border-2 border-gray-500 p-4 w-4/12">
+            <div className="border-2 border-gray-500">{props.cardName}</div>
+            <div className="border-2 border-gray-500 mt-4">image</div>
         </div>
     )
 }
