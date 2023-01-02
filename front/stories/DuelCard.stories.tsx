@@ -1,5 +1,4 @@
-import type { ComponentStory,ComponentStoryObj, ComponentMeta } from "@storybook/react";
-
+import type { ComponentStoryObj, ComponentMeta } from "@storybook/react";
 import DuelCard from "../components/DuelCard"
 
 export default {
@@ -9,8 +8,8 @@ export default {
 
 
 export const Default: ComponentStoryObj<typeof DuelCard> = {
-    args:{
-        cardName:"テストCSF3.0"
+    args: {
+        cardName: "テストCSF3.0"
     },
-    storyName:"デフォルト"
+    storyName: "デフォルト"
 }
