@@ -2,7 +2,6 @@ import * as React from 'react'
 
 type CardKind = "monster" | "magicTrap" | "field" | "grave" | "deck" | "extra" | "link"
 type DuelFieldProps = {
-    card: string
 }
 const DuelField: React.FC<DuelFieldProps> = (props) => {
     const upperFiledKind: CardKind[] = ["link", "link"]
