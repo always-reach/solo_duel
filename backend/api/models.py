@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin, UserManager
@@ -36,3 +37,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     def has_perm(self, perm, obj=None):
         return True
 
+
+class Card(models.Model):
+    name = models.CharField(verbose_name="カード名", blank=False, null=False, max_length=255)
+    effect = models.TextField(verbose_name="効果", blank=True, null=False)
+    is_extra = models.BooleanField(verbose_name="エクストラデッキ", default=False)
+
+
+class Deck(models.Model):
+    name = models.CharField(verbose_name="デッキ名", blank=False, null=False, max_length=255)
+    cards = models.ManyToManyField(Card, through="DeckCard")
+
+
+class DeckCard(models.Model):
+    card = models.ForeignKey(Card, on_delete=models.CASCADE)
+    deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
+    card_count = models.IntegerField(verbose_name="枚数", validators=[MinValueValidator(1), MaxValueValidator(3)])
