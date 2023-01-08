@@ -10,7 +10,7 @@ const Header = () => {
                 <a href="/" className="inline-block mt-0 text-teal-200 hover:text-white mr-4">
                     デッキ回し
                 </a>
-                <a href="/create_deck" className="inline-block mt-0 text-teal-200 hover:text-white mr-4">
+                <a href="/deck" className="inline-block mt-0 text-teal-200 hover:text-white mr-4">
                     デッキ構築
                 </a>
             </div>
