@@ -1,7 +1,9 @@
-const CreateDeck=()=>{
+import TextField from "../components/TextField"
+
+const CreateDeck:React.FC=()=>{
     return(
         <div>
-            test
+            <TextField placeholder="デッキ名"/>
         </div>
     )
 }
