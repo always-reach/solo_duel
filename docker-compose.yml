@@ -2,6 +2,28 @@ version: '3'
 
 services:
 
+  db:
+    image: postgres
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=postgres"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    ports:
+      - "8888:80"
+    volumes:
+      - pgadmin4_data:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: bytheway811@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    depends_on:
+      - db
+
   nextjs:
     build:
       context: .
@@ -15,3 +37,18 @@ services:
     ports:
       - "3000:3000"
 
+  django:
+    build:
+      context: .
+      dockerfile: DockerfileDjango
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/usr/src/app:cached
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+  pgadmin4_data:
