@@ -1,18 +1,18 @@
-import TextField from "../../components/TextField"
 
+import DeckContext from "../../components/DeckContent"
+import TextField from "../../components/TextField"
 const CreateDeck: React.FC = () => {
     return (
         <div>
             <TextField placeholder="デッキ名" />
-            <div className="grid grid-cols-9">
-                <div className="bg-blue-300 border-2 rounded-lg col-span-1">
-                    デッキの中身
-                </div>
-                <div className="bg-blue-300 border-2 rounded-lg col-span-1">
+
+            <div className='flex border-2'>
+                <DeckContext />
+                <div className="bg-blue-300 border-2 rounded-lg w-2/5">
                     カードリスト
                 </div>
             </div>
-            
+
 
         </div>
     )
